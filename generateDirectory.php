@@ -5,13 +5,17 @@ $dir=dirname(__FILE__);
 
 
 
-if(isset($_REQUEST['file'])){
-  $dir = $_REQUEST['file'];
-  echo $dir;
+if(isset($_REQUEST['type'])){
+  $dirtype = $_REQUEST['type'];
+  if ($dirtype==="dir") {
+
+  	$dir=dirname();
+  	
+  }
+
 } else {
-	$file=$_REQUEST['file'];
-
-
+	//include function for fil download
+	/*$file=$_REQUEST['file'];*/
 }
 
 explorerFile($dir);
@@ -38,14 +42,16 @@ function explorerFile($dir){
 
   	if ($type === "dir") {
   	$classType="icon-folder";
+  	$actionSend="onclick=sendName();sendPath();";
   	$size='-';
  	 } else {
   	$classType="icon-doc-inv";
+  	$actionSend="onclick=sendName();";
   }
  	
 
   echo '<div class="row vignette">
-              <p class="col-sm-3 '.$classType.' folderName">'.$folderName.'</p>
+              <p class="col-sm-3 '.$classType.' folderName'.$actionSend.'">'.$folderName.'</p>
               <p class="col-sm-3">'.$size.'</p>
               <p class="col-sm-3">'.$type.'</p>
               <p class="col-sm-3">'.$modified.'</p>
