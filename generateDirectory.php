@@ -9,7 +9,8 @@ if(isset($_REQUEST['type'])){
   $dirtype = $_REQUEST['type'];
   if ($dirtype==="dir") {
 
-  	$dir=dirname();
+  	$dir .= '/..';
+  	/*$dir=;*/
   	
   }
 
@@ -42,16 +43,16 @@ function explorerFile($dir){
 
   	if ($type === "dir") {
   	$classType="icon-folder";
-  	$actionSend="onclick=sendName();sendPath();";
+  	$actionSend="onclick=\"sendName();sendPath();";
   	$size='-';
  	 } else {
   	$classType="icon-doc-inv";
-  	$actionSend="onclick=sendName();";
+  	$actionSend="onclick=\"sendName();";
   }
  	
 
   echo '<div class="row vignette">
-              <p class="col-sm-3 '.$classType.' folderName'.$actionSend.'">'.$folderName.'</p>
+              <p class="col-sm-3 '.$classType.' folderName" '.$actionSend.'">'.$folderName.'</p>
               <p class="col-sm-3">'.$size.'</p>
               <p class="col-sm-3">'.$type.'</p>
               <p class="col-sm-3">'.$modified.'</p>

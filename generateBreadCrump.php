@@ -3,6 +3,8 @@
 // Give the full path of the page
 
 
+
+
 $crumbs = explode("/",$_SERVER["REQUEST_URI"]);
 /*print_r($_SERVER["REQUEST_URI"]);*/
 echo'<ol class="breadcrumb">';

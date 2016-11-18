@@ -17,27 +17,27 @@
   </head>
 
   <body>
-    
+
     <div class="container-fluid">
       <!--   <span id='test'></span> -->
-    <aside class="col-sm-2"> <h2>Mes dossiers</h2> 
-      <p class="icon-folder">folder name</p> 
+    <aside class="col-sm-2"> <h2>Mes dossiers</h2>
       <p class="icon-folder">folder name</p>
-      <p class="icon-folder">folder name</p> 
-      <p class="icon-folder">folder name</p> 
-      <p class="icon-folder">folder name</p> 
-      <p class="icon-folder">folder name</p> 
+      <p class="icon-folder">folder name</p>
+      <p class="icon-folder">folder name</p>
+      <p class="icon-folder">folder name</p>
+      <p class="icon-folder">folder name</p>
+      <p class="icon-folder">folder name</p>
     </aside>
 
     <div class="col-sm-10">
-      
+
     <header class="row">
 
      <h2 class="col-sm-11 icon-home"> </h2>
 
      <h3><?php include('generateBreadCrump.php');?></h3>
 
-        
+
       <h3> <button name="up" type="" class="icon-up-big"><image></image></button></h3>
 
     </header>
@@ -53,26 +53,27 @@
       <?php include('generateDirectory.php');?>
 
     </main>
-  
+
     </div>
     </div>
-    
-    
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script>
+    function sendName(element)// affiche les éléments générer dans generateDirectory
+    {
+      var up = '';
+      var path = '/';
+      var type = 'dir';
+      var name = 'toto';
+        $.post('generateDirectory.php', { 'up' : up, 'path' : path, 'type' : type, 'name' : name},
+        function(data){document.querySelector('div main').innerHTML = data;});
+    }
+    function sendPath(element)
+    {
 
-    $(".vignette").click(function(){
-      var nomDuDossier = $(".folderName").html();
-      /*console.log(nomDuDossier);*/
-
-      /*display root-> see foreach in a table that increment the classname*/
-
-
-
-    });
- 
-
+    }
   </script>
   </body>
 
