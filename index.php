@@ -61,8 +61,13 @@
     <script>
 
     $(".vignette").click(function(){
-      nomDuDossier = $(".folderName").val();
-      console.log(nomDuDossier);
+      var nomDuDossier = $(".folderName").html();
+      /*console.log(nomDuDossier);*/
+
+      /*display root-> see foreach in a table that increment the classname*/
+
+
+
     });
  
 

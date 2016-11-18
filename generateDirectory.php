@@ -4,6 +4,7 @@ $dir=dirname(__FILE__);
 $file=scandir($dir);
 /*print_r($file);	*/
 
+
  function human_filesize($bytes, $decimals = 2) {
         $sz = 'BKMGTP';
         $factor = floor((strlen($bytes) - 1) / 3);
@@ -20,8 +21,19 @@ $file=scandir($dir);
   }
 
   function generateHTML($folderName,$size,$type,$modified){
+
+  	if ($type === "dir") {
+  	$classType="icon-folder";
+  	$size='-';
+ 	 } else {
+  	$classType="icon-doc-inv";
+ 	}
+
+
+
+
   	echo '<div class="row vignette">
-              <p class="col-sm-3 icon-folder folderName">'.$folderName.'</p>
+              <p class="col-sm-3 '.$classType.' folderName">'.$folderName.'</p>
               <p class="col-sm-3">'.$size.'</p>
               <p class="col-sm-3">'.$type.'</p>
               <p class="col-sm-3">'.$modified.'</p>
