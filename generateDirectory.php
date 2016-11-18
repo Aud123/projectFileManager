@@ -11,6 +11,7 @@ $file=scandir($dir);
         return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . @$sz[$factor];
       }
 
+
   foreach ($file as $key => $value) {
   	$infoFiles[]=$value.'|'.human_filesize(filesize($value)).'|'.filetype($value).'|'.date ("d/m/Y H:i ", filemtime($value)).PHP_EOL;
   }
@@ -20,6 +21,7 @@ $file=scandir($dir);
      generateHTML($arrayFiles[0],$arrayFiles[1],$arrayFiles[2],$arrayFiles[3]);
   }
 
+
   function generateHTML($folderName,$size,$type,$modified){
 
   	if ($type === "dir") {
@@ -27,12 +29,10 @@ $file=scandir($dir);
   	$size='-';
  	 } else {
   	$classType="icon-doc-inv";
- 	}
+  }
+ 	
 
-
-
-
-  	echo '<div class="row vignette">
+  echo '<div class="row vignette">
               <p class="col-sm-3 '.$classType.' folderName">'.$folderName.'</p>
               <p class="col-sm-3">'.$size.'</p>
               <p class="col-sm-3">'.$type.'</p>

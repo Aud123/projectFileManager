@@ -33,7 +33,9 @@
       
     <header class="row">
 
-     <h2 class="col-sm-11 icon-home">breadcrumb variable a mettre a jour</h2>
+     <h2 class="col-sm-11 icon-home"> </h2>
+
+     <h3><?php include('generateBreadCrump.php');?></h3>
 
         
       <h3> <button name="up" type="" class="icon-up-big"><image></image></button></h3>
