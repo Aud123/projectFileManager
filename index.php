@@ -57,22 +57,15 @@
     function sendPath(element)
     {
       var ligne = element.parentElement;// on récupere l'element qui contient toutes les informations à transmettre
-      /*console.log(ligne);*/
       var path = crumb()+'/'+ligne.children[0].innerHTML;
-    /*console.log(ligne.children[0]);*/
         $.post('generateBreadCrumb.php', {'path' : path},
         function(data){document.querySelector('header').innerHTML=data;});
     }
     function crumb(){
-      var crumbs = document.querySelectorAll('header ol li a'); // récupere les crumbs
-      /*console.log(crumbs);*/
+      var crumbs = document.querySelectorAll('header ol li a'); // récupere les crumbs notifiés avec les a
       var path = '';
       for(var i = 0; i<crumbs.length;i++){// ignore le premier li
         path += '/'+crumbs[i].innerHTML;
-
-
-        console.log(crumbs[i]);
-
       }
       return path;
     }
@@ -85,6 +78,11 @@
         function(data){document.querySelector('header').innerHTML=data;});
         $.post('generateDirectory.php', {'path' : path, 'type' : "dir"},
         function(data){document.querySelector('div main').innerHTML = data;});
+    }
+
+    function sendPathBreadCrumbs(element){
+      var  index = element.parentElement.children.indexOf(element);
+      console.log(index);
     }
 
 
