@@ -18,6 +18,7 @@ if(isset($_REQUEST['type'])){
     explorerFile($dir);
 }
 
+
 function explorerFile($dir){
   echo '<div class="row">
           <p class="col-xs-6">FILE NAME</p>

@@ -19,14 +19,14 @@
   <body>
 
     <div class="container-fluid">
-      <!--   <span id='test'></span> -->
-    <aside class="col-sm-2 hidden-xs"> <h2>Mes dossiers</h2>
-      <p class="icon-folder">folder name</p>
-      <p class="icon-folder">folder name</p>
-      <p class="icon-folder">folder name</p>
-      <p class="icon-folder">folder name</p>
-      <p class="icon-folder">folder name</p>
-      <p class="icon-folder">folder name</p>
+        <!--   <span id='test'></span> -->
+      <aside class="col-sm-2 hidden-xs"> <h2>Mes dossiers</h2>
+        <p class="icon-folder">folder name</p>
+        <p class="icon-folder">folder name</p>
+        <p class="icon-folder">folder name</p>
+        <p class="icon-folder">folder name</p>
+        <p class="icon-folder">folder name</p>
+        <p class="icon-folder">folder name</p>
     </aside>
 
     <div class="col-sm-10">
@@ -57,18 +57,37 @@
     function sendPath(element)
     {
       var ligne = element.parentElement;// on récupere l'element qui contient toutes les informations à transmettre
+      /*console.log(ligne);*/
       var path = crumb()+'/'+ligne.children[0].innerHTML;
+    /*console.log(ligne.children[0]);*/
         $.post('generateBreadCrumb.php', {'path' : path},
         function(data){document.querySelector('header').innerHTML=data;});
     }
     function crumb(){
       var crumbs = document.querySelectorAll('header ol li a'); // récupere les crumbs
+      /*console.log(crumbs);*/
       var path = '';
       for(var i = 0; i<crumbs.length;i++){// ignore le premier li
         path += '/'+crumbs[i].innerHTML;
+
+
+        console.log(crumbs[i]);
+
       }
       return path;
     }
+
+    function sendPathBreadCrumb(){
+    var lastCrumb = document.querySelector('header ol li:last-child');
+    lastCrumb.parentNode.removeChild(lastCrumb);
+      var path = crumb();
+        $.post('generateBreadCrumb.php', {'path' : path},
+        function(data){document.querySelector('header').innerHTML=data;});
+        $.post('generateDirectory.php', {'path' : path, 'type' : "dir"},
+        function(data){document.querySelector('div main').innerHTML = data;});
+    }
+
+
   </script>
   </body>
 
