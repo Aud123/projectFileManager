@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>FILE EXPLORER</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -32,26 +32,11 @@
     <div class="col-sm-10">
 
     <header class="row">
-
-     <h2 class="col-sm-11 icon-home"> </h2>
-
-     <h3><?php include('generateBreadCrump.php');?></h3>
-
-
-      <h3> <button name="up" type="" class="icon-up-big"><image></image></button></h3>
-
+     <?php include('generateBreadCrumb.php');?>
     </header>
 
     <main class="row">
-      <div class="row">
-      <p class="col-sm-4">FILE NAME</p>
-      <p class="col-sm-2">SIZE</p>
-      <p class="col-sm-2">TYPE</p>
-      <p class="col-sm-2">Modified</p>
-      </div>
-
       <?php include('generateDirectory.php');?>
-
     </main>
 
     </div>
@@ -63,16 +48,26 @@
     <script>
     function sendName(element)// affiche les éléments générer dans generateDirectory
     {
-      var up = '';
-      var path = '/';
-      var type = 'dir';
-      var name = 'toto';
-        $.post('generateDirectory.php', { 'up' : up, 'path' : path, 'type' : type, 'name' : name},
+      var ligne = element.parentElement;// on récupere l'element qui contient toutes les informations à transmettre
+      var path = crumb()+'/'+ligne.children[0].innerHTML;
+      var type = ligne.children[2].innerHTML;
+        $.post('generateDirectory.php', {'path' : path, 'type' : type},
         function(data){document.querySelector('div main').innerHTML = data;});
     }
     function sendPath(element)
     {
-
+      var ligne = element.parentElement;// on récupere l'element qui contient toutes les informations à transmettre
+      var path = crumb()+'/'+ligne.children[0].innerHTML;
+        $.post('generateBreadCrumb.php', {'path' : path},
+        function(data){document.querySelector('header').innerHTML=data;});
+    }
+    function crumb(){
+      var crumbs = document.querySelectorAll('header ol li a'); // récupere les crumbs
+      var path = '';
+      for(var i = 0; i<crumbs.length;i++){// ignore le premier li
+        path += '/'+crumbs[i].innerHTML;
+      }
+      return path;
     }
   </script>
   </body>

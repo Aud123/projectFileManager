@@ -60,4 +60,38 @@
 .icon-left:before { content: '\f177'; } /* '' */
 .icon-right:before { content: '\f178'; } /* '' */
 
+* {
+    box-sizing: border-box;
+}
+
+aside {
+  background-color: #f5f5f5;
+  border: 1px solid blue;
+ /* height:47em;*/
+}
+
+header {
+  background-color: #f5f5f5;
+  border: 1px solid blue;
+}
+
+main {
+  border: 1px solid blue;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        /*width: 100%;
+    }*/
+
+  /*  aside {
+      width:100%;
+      height:auto;
+    }*/
+}
+}
+
+
 
