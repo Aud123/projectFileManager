@@ -20,7 +20,7 @@
 
     <div class="container-fluid">
       <!--   <span id='test'></span> -->
-    <aside class="col-sm-2"> <h2>Mes dossiers</h2>
+    <aside class="col-sm-2 hidden-xs"> <h2>Mes dossiers</h2>
       <p class="icon-folder">folder name</p>
       <p class="icon-folder">folder name</p>
       <p class="icon-folder">folder name</p>
